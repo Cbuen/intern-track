@@ -1,0 +1,48 @@
+export default function Login() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+      <main className="w-full max-w-md p-8">
+        
+        <div className="bg-white dark:bg-zinc-900 p-8 rounded-2xl shadow-md space-y-6">
+          
+          <h1 className="text-2xl font-bold text-center">Login</h1>
+
+          {/* Username */}
+          <div className="flex flex-col space-y-1">
+            <label htmlFor="username" className="text-sm font-medium">
+              Username
+            </label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Enter username"
+              className="p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-zinc-800"
+            />
+          </div>
+
+          {/* Password */}
+          <div className="flex flex-col space-y-1">
+            <label htmlFor="password" className="text-sm font-medium">
+              Password
+            </label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Enter password"
+              className="p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-zinc-800"
+            />
+          </div>
+
+          {/* Button */}
+          <button className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">
+            Login
+          </button>
+
+        </div>
+
+      </main>
+    </div>
+  );
+}
