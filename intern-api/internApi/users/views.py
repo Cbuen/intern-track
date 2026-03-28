@@ -33,7 +33,7 @@ class UserLogin(APIView):
         if user is not None:
             token = Token.objects.get_or_create(user=user)
             # remove for security purposes
-            return Response(data=f"logged in, ${token}", status=status.HTTP_202_ACCEPTED)
+            return Response(data=f"{token[0]}", status=status.HTTP_202_ACCEPTED)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 

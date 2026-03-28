@@ -7,7 +7,11 @@ export default function Login() {
   const [password, setPassword] = useState("Enter Password");
 
   function handleLogin() {
-    login(username, password);
+    login(username, password).then((data) => {
+      const token = data;
+      localStorage.setItem("auth_token", token);
+      console.log(localStorage.getItem("auth_token"));
+    });
   }
 
   // move function later to nav
