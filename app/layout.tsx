@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+// custom providers
+import { AuthProvider } from "@/context/authcontext";
 
 const hoverFX = "hover:text-sky-300 duration-200 ease-in-out";
 const linkstyle = "border rounded py-2.5"
@@ -46,9 +48,11 @@ export default function RootLayout({
           <Link href={`/`} className={hoverFX + linkstyle}>
             Suggestions
           </Link>
-        <h1 className="text-4xl font-bold">InternTrack</h1>
+          <h1 className="text-4xl font-bold">InternTrack</h1>
         </nav>
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
