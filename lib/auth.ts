@@ -11,10 +11,11 @@ export function login(username: string, password: string) {
 
 }
 
-export function logout(){
+export function logout(auth_token: string){
     return apiFetch("users/logout/", {
         method: "POST",
         credentials: "include",
+        body: JSON.stringify({auth_token})
     })
 }
 

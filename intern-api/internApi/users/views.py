@@ -39,11 +39,9 @@ class UserLogin(APIView):
 
 class UserLogout(APIView):
     def post(self, request):
-        if request.user.is_authenticated:
-            logout(request)
-            return Response(status=status.HTTP_202_ACCEPTED)
-        
-        return Response(data="User Not Logged In", status=status.HTTP_401_UNAUTHORIZED)
+        auth_token = request.data.get("auth_token")
+        token = Token.objects.get(key=auth_token)
+        return Response(data=str(token.user) + " logged out", status=status.HTTP_202_ACCEPTED)
         
     
 class UserSignup(APIView):
