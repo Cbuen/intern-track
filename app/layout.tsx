@@ -33,7 +33,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         {/* navbar for all pages */}
-        <nav className="text-xl h-[5.5vh] p-3.5 space-x-7.5 flex flex-row">
+        <nav className="text-xl h-[8.5vh] sticky top-0 z-50 p-3.5 space-x-7.5 flex flex-row">
           <Link href={`/`} className={hoverFX + linkstyle}>
             Home
           </Link>

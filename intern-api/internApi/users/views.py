@@ -2,9 +2,13 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.http import JsonResponse
 from .serializers import UserSerializer
 from rest_framework import status
 from django.contrib.auth import authenticate, login, logout
+from rest_framework.decorators import api_view
+from rest_framework.authtoken.models import Token
+
 
 
 
@@ -26,21 +30,21 @@ class UserLogin(APIView):
         username = request.data.get("username")
         password = request.data.get("password")
         user = authenticate(request, username=username, password=password)
-        if user:
-            login(request, user)
-            return Response(data="logged in", status=status.HTTP_202_ACCEPTED)
+        if user is not None:
+            token = Token.objects.get_or_create(user=user)
+            # remove for security purposes
+            return Response(data=f"logged in, ${token}", status=status.HTTP_202_ACCEPTED)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class UserLogout(APIView):
-    def get(self, request):
-        if request.user.username:
+    def post(self, request):
+        if request.user.is_authenticated:
             logout(request)
             return Response(status=status.HTTP_202_ACCEPTED)
-        else:
-            return Response(data="User Not Logged In", status=status.HTTP_404_NOT_FOUND)
         
-
+        return Response(data="User Not Logged In", status=status.HTTP_401_UNAUTHORIZED)
+        
     
 class UserSignup(APIView):
     def get(self, request):
