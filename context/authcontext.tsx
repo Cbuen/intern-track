@@ -1,3 +1,4 @@
+"use client"
 import { createContext, useContext, useState } from "react";
 import React from 'react';
 
@@ -5,7 +6,6 @@ import React from 'react';
 type User = {
   username: string;
   token: string;
-  id?: number;
 };
 
 type AuthContextType = {

@@ -18,5 +18,5 @@ export async function apiFetch(endpoint: string, options: RequestInit = {}) {
         throw new Error(data?.error || "Something went wrong");
     }
 
-    return data;
+    return {data, response};
 }

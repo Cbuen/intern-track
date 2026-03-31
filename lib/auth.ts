@@ -1,4 +1,5 @@
 import { apiFetch } from "./api";
+import { signUpType } from "@/types/types";
 
 
 // Refractor to include csrf token for django verification
@@ -17,6 +18,13 @@ export function logout(auth_token: string){
         credentials: "include",
         body: JSON.stringify({auth_token})
     })
+}
+
+export function signup(user: signUpType) {
+    return apiFetch("users/signup/", {
+        method: "POST",
+        body: JSON.stringify(user)
+    });
 }
 
 

@@ -1,5 +1,6 @@
-
+"use client"
 export default function AddJob() {
+
     return (
         <section className="space-y-4 border p-7.5 rounded-2xl">
 

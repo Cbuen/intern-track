@@ -1,26 +1,34 @@
 "use client"
 import { login, logout } from "@/lib/auth";
 import { useEffect, useState } from "react";
+import { useAuth } from "@/context/authcontext";
 
 export default function Login() {
   const [username, setUsername] = useState("Enter Username");
   const [password, setPassword] = useState("Enter Password");
-
+  const { user, logIn, logOut } = useAuth();
 
   function handleLogin() {
     login(username, password).then((data) => {
-      const token = data;
+      const token = data.data;
       localStorage.setItem("auth_token", token);
+      localStorage.setItem("username", username);
+      logIn({
+        username,
+        token
+      })
+
     });
   }
-
-  // move function later to nav
+3
+  // move function later to context provider? and navbar
   function handleLogout() {
     if (localStorage.getItem("auth_token")) {
       const auth_token = localStorage.getItem("auth_token") || ""; // if null empty ""
       logout(auth_token).then((data) => {
         console.log(data);
       });
+      logOut();
       localStorage.removeItem("auth_token");
     }
   }

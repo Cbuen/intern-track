@@ -45,9 +45,6 @@ class UserLogout(APIView):
         
     
 class UserSignup(APIView):
-    def get(self, request):
-        return Response(data="SignupView")
-    
     def post(self, request):
         seralizer = UserSerializer(data=request.data)
 
@@ -56,3 +53,6 @@ class UserSignup(APIView):
             return Response(seralizer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(seralizer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# TODO: Create enpoint for adding jobs/getting jobs for user return strcture {{job_id, company_name, status}}
