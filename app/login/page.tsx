@@ -2,11 +2,18 @@
 import { login, logout } from "@/lib/auth";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/context/authcontext";
+import { redirect } from "next/navigation";
 
 export default function Login() {
   const [username, setUsername] = useState("Enter Username");
   const [password, setPassword] = useState("Enter Password");
   const { user, logIn, logOut } = useAuth();
+
+  useEffect(() => {
+    if (localStorage.getItem("auth_token")) {
+      redirect("/");
+    }
+  }, []);
 
   function handleLogin() {
     login(username, password).then((data) => {
@@ -17,7 +24,7 @@ export default function Login() {
         username,
         token
       })
-
+      window.location.reload();
     });
   }
 3

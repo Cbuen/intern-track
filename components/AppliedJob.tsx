@@ -5,6 +5,9 @@ import { Job } from "@/types/types";
 
 const listItemStyle = "flex flex-row space-x-12.5";
 
+// todo: add delete option to select and delete jobs
+// todo: add method for update application stautus per row 
+
 
 
 export default function AppliedJob() {

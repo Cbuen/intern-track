@@ -10,6 +10,7 @@ export default function AddJob() {
     function handleAddJob() {
         addJob({company_name,title,status}).then(({data, response}) => {
             console.log(data);
+            window.location.reload();
         });
     }
 
