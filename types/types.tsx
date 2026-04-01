@@ -6,8 +6,17 @@ export interface signUpType {
     confirm_password: string
 }
 
-export interface Job {
+export interface createJob {
     company_name: string,
     title: string,
     status: string
 }
+
+export interface Job {
+    id: number,
+    company_name: string,
+    title: string,
+    status: string
+}
+
+

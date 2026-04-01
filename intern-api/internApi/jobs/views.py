@@ -21,6 +21,12 @@ class JobAdd(APIView):
         print(serializer.errors)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
+class JobAppliedGet(APIView):
+    # TODO: connect to react 
+    def post(self, request):
+        auth_token = request.data
 
-    def get(self, request):
-        return Response(status=status.HTTP_200_OK)
+        user = Token.objects.get(key=auth_token).user.id
+        jobs = Job.objects.filter(user=user)
+        serializer = JobSerializer(jobs, many=True)
+        return Response(data=serializer.data)
