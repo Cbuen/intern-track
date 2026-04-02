@@ -27,18 +27,6 @@ export default function Login() {
       window.location.reload();
     });
   }
-3
-  // move function later to context provider? and navbar
-  function handleLogout() {
-    if (localStorage.getItem("auth_token")) {
-      const auth_token = localStorage.getItem("auth_token") || ""; // if null empty ""
-      logout(auth_token).then((data) => {
-        console.log(data);
-      });
-      logOut();
-      localStorage.removeItem("auth_token");
-    }
-  }
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
@@ -83,11 +71,6 @@ export default function Login() {
           <button onClick={handleLogin} className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">
             Login
           </button>
-
-          <button onClick={handleLogout} className="w-full bg-red-500">
-            Logout
-          </button>
-
         </div>
 
       </main>

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getJobs } from "@/lib/job-api";
 import { Job } from "@/types/types";
 
-const listItemStyle = "flex flex-row space-x-12.5";
+const listItemStyle = "grid grid-flow-col row-span-3";
 
 // todo: add delete option to select and delete jobs
 // todo: add method for update application stautus per row 
